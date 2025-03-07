@@ -22,6 +22,7 @@
                 android:id="@+id/map"
                 android:layout_width="535dp"
                 android:layout_height="950dp"
+                android:contentDescription="@string/map"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -30,11 +31,25 @@
                 app:srcCompat="@drawable/map" />
 
             <Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
                 android:background="@color/light_blue"
+                android:elevation="4dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/pacifico_regular"
+                    android:text="@string/app_name_main_screen"
+                    android:textColor="@color/orange"
+                    android:textSize="30sp" />
+
+            </Toolbar>
 
             <ImageView
                 android:id="@+id/mapPin1"
@@ -66,6 +81,7 @@
                 android:id="@+id/mapPin3"
                 android:layout_width="66dp"
                 android:layout_height="67dp"
+                android:contentDescription="@string/map_pin_3"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.768"
@@ -73,6 +89,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.701"
                 app:srcCompat="@drawable/mappin" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
