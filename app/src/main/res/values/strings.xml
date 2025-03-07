@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TravelTrackerApp</string>
+    <string name="app_logo_description">Logo of App</string>
+    <string name="app_name_load_screen">Travel\nTracker</string>
+    <string name="load_screen_cloud">Load screen cloud</string>
+    <string name="map_pin_1">Map pin 1</string>
+    <string name="map_pin_2">Map pin 2</string>
 </resources>
