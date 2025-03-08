@@ -8,4 +8,7 @@
     <string name="map_pin_2">Map pin 2</string>
     <string name="map_pin_3">Map pin 3</string>
     <string name="map">Map</string>
+    <string name="home_nav_menu">Главная</string>
+    <string name="places_nav_menu">Места</string>
+    <string name="add_place_button">Add place</string>
 </resources>
