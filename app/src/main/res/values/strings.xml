@@ -11,4 +11,6 @@
     <string name="home_nav_menu">Главная</string>
     <string name="places_nav_menu">Места</string>
     <string name="add_place_button">Add place</string>
+    <string name="photo_of_place">Photo of place</string>
+    <string name="trashcan_icon">Корзина</string>
 </resources>
