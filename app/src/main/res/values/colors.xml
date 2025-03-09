@@ -10,4 +10,5 @@
     <color name="light_blue">#8AD8FF</color>
     <color name="light_pink">#A79393</color>
     <color name="orange">#FFB134</color>
+    <color name="description_background">#E7E7E7</color>
 </resources>
