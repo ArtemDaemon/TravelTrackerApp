@@ -19,4 +19,5 @@
     <string name="place_address_pin">place_address_pin</string>
     <string name="place_address"><u>г. Москва, ул. Скворецкая, 12</u></string>
     <string name="refresh_address_icon">refresh_address_icon</string>
+    <string name="toolbar_save_icon">Сохранить</string>
 </resources>
