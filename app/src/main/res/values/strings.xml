@@ -25,4 +25,5 @@
     <string name="new_place_description">Без описания</string>
     <string name="new_place_address"><u>Адрес не найден</u></string>
     <string name="google_widget">Google widget</string>
+    <string name="card_place_photo">Card place photo</string>
 </resources>
