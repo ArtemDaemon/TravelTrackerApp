@@ -1,5 +1,6 @@
 package com.example.traveltrackerapp;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.traveltrackerapp.database.AppDatabase;
 import com.example.traveltrackerapp.entities.Place;
 import com.example.traveltrackerapp.view_models.PlacesViewModel;
 
@@ -58,8 +60,43 @@ public class PlaceDetailsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.action_edit) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_edit) {
             Intent intent = new Intent(this, CreateActivity.class);
+            intent.putExtra("isEdit", true);
+            intent.putExtra("placeId", currentPlace.getId());
+            intent.putExtra("name", currentPlace.getName());
+            intent.putExtra("description", currentPlace.getDescription());
+            intent.putExtra("address", currentPlace.getAddress());
+            intent.putExtra("imageUri", currentPlace.getImageUri());
+            startActivity(intent);
+            return true;
         }
+        if (itemId == R.id.action_cart) {
+            showDeleteConfirmationDialog();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showDeleteConfirmationDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Удалить место")
+                .setMessage("Вы уверены, что хотите удалить это место?")
+                .setPositiveButton("Удалить",
+                        (dialog, which) -> deletePlace())
+                .setNegativeButton("Отмена", null)
+                .show();
+    }
+
+    private void deletePlace() {
+        AppDatabase db = AppDatabase.getInstance(getApplicationContext());
+        new Thread(() -> {
+            db.placeDao().delete(currentPlace);
+            runOnUiThread(() -> {
+                Toast.makeText(this, "Место удалено", Toast.LENGTH_SHORT).show();
+                finish();
+            });
+        }).start();
     }
 }

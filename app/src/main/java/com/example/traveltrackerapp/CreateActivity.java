@@ -40,6 +40,21 @@ public class CreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
+        boolean isEdit = getIntent().getBooleanExtra("isEdit", false);
+        if (isEdit) {
+            String name = getIntent().getStringExtra("name");
+            String description = getIntent().getStringExtra("description");
+            String address = getIntent().getStringExtra("address");
+            String imageUri = getIntent().getStringExtra("imageUri");
+
+            ((EditText) findViewById(R.id.place_create_name)).setText(name);
+            ((EditText) findViewById(R.id.place_create_description)).setText(description);
+            ((EditText) findViewById(R.id.place_create_address)).setText(address);
+
+            selectedImageUri = imageUri;
+            ((ImageView) findViewById(R.id.place_create_image)).setImageURI(Uri.parse(imageUri));
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(v -> {finish();});
@@ -132,6 +147,23 @@ public class CreateActivity extends AppCompatActivity {
         if (name.isEmpty() || description.isEmpty() || address.isEmpty()) {
             Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show();
             return;
+        }
+
+        if (getIntent().getBooleanExtra("isEdit", false)) {
+            int placeId = getIntent().getIntExtra("placeId", -1);
+            if (placeId != -1) {
+                AppDatabase db = AppDatabase.getInstance(getApplicationContext());
+                new Thread(() -> {
+                    Place updatedPlace = new Place(name, address, selectedImageUri, description);
+                    updatedPlace.setId(placeId);
+                    db.placeDao().updatePlace(updatedPlace);
+                    runOnUiThread(() -> {
+                        Toast.makeText(this, "Место обновлено", Toast.LENGTH_SHORT).show();
+                        finish();
+                    });
+                }).start();
+                return;
+            }
         }
 
         Place newPlace = new Place(name, address, selectedImageUri, description);
