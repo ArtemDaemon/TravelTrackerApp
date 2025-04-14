@@ -21,9 +21,9 @@
     <string name="refresh_address_icon">refresh_address_icon</string>
     <string name="toolbar_save_icon">Сохранить</string>
     <string name="no_image_place">No image place</string>
-    <string name="new_place_name"><u>Без названия</u></string>
+    <string name="new_place_name">Без названия</string>
     <string name="new_place_description">Без описания</string>
-    <string name="new_place_address"><u>Адрес не найден</u></string>
+    <string name="new_place_address">Адрес не найден</string>
     <string name="google_widget">Google widget</string>
     <string name="card_place_photo">Card place photo</string>
 </resources>
