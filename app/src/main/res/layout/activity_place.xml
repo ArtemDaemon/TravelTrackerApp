@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -40,18 +41,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/place_detail_image" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="17dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/place_name_edit_icon"
-        app:layout_constraintStart_toEndOf="@+id/place_detail_name"
-        app:layout_constraintTop_toBottomOf="@+id/place_detail_image"
-        app:srcCompat="@drawable/ic_edit"
-        android:alpha=".5"/>
-
     <TextView
         android:id="@+id/place_detail_description"
         android:layout_width="389dp"
@@ -65,30 +54,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/place_detail_name" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="17dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="8dp"
-        android:alpha=".5"
-        android:contentDescription="@string/place_name_edit_icon"
-        app:layout_constraintBottom_toBottomOf="@+id/place_detail_description"
-        app:layout_constraintEnd_toEndOf="@+id/place_detail_description"
-        app:srcCompat="@drawable/ic_edit" />
-
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="17dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
-        android:alpha=".5"
-        android:contentDescription="@string/place_name_edit_icon"
-        app:layout_constraintStart_toEndOf="@+id/place_detail_address"
-        app:layout_constraintTop_toBottomOf="@+id/place_detail_description"
-        app:srcCompat="@drawable/ic_edit" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -109,22 +74,19 @@
         android:fontFamily="@font/roboto"
         android:text='@string/place_address'
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/place_detail_description" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="22dp"
         android:layout_height="18dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:alpha=".5"
         android:contentDescription="@string/refresh_address_icon"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
+        app:layout_constraintStart_toEndOf="@+id/place_detail_address"
         app:layout_constraintTop_toBottomOf="@+id/place_detail_description"
-        app:srcCompat="@drawable/ic_places"
-        android:alpha=".5"/>
+        app:srcCompat="@drawable/ic_places" />
 
     <ImageView
         android:id="@+id/imageView10"

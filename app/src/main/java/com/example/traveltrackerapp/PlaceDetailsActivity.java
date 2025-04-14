@@ -1,7 +1,9 @@
 package com.example.traveltrackerapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,6 +46,20 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(v -> {finish();});
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu_show, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_edit) {
+            Intent intent = new Intent(this, CreateActivity.class);
+        }
     }
 }

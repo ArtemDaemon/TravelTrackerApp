@@ -1,6 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_edit"
+        android:title="@string/edit_icon"
+        android:icon="@drawable/ic_edit"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/action_cart"
         android:icon="@drawable/ic_cart"
         android:title="@string/trashcan_icon"
