@@ -30,7 +30,7 @@ public class PlacesFragment extends Fragment {
 
         RecyclerView recyclerView = root.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new PlacesAdapter();
+        adapter = new PlacesAdapter(requireContext());
         recyclerView.setAdapter(adapter);
 
         viewModel = new ViewModelProvider(this).get(PlacesViewModel.class);

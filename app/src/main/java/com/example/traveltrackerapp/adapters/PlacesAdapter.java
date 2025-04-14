@@ -1,5 +1,7 @@
 package com.example.traveltrackerapp.adapters;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.traveltrackerapp.PlaceDetailsActivity;
 import com.example.traveltrackerapp.R;
 import com.example.traveltrackerapp.entities.Place;
 
@@ -18,15 +21,15 @@ import java.util.List;
 
 public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewHolder> {
     private List<Place> placeList = new ArrayList<>();
-    private OnPlaceClickListener listener;
+    private Context context;
+
+    public PlacesAdapter(Context context) {
+        this.context = context;
+    }
 
     public void setPlaceList(List<Place> places) {
         this.placeList = places;
         notifyDataSetChanged();
-    }
-
-    public interface OnPlaceClickListener {
-        void onPlaceClick(Place place);
     }
 
     public static class PlaceViewHolder extends RecyclerView.ViewHolder {
@@ -56,18 +59,14 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
         holder.image.setImageURI(Uri.parse(place.imageUri));
 
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onPlaceClick(place);
-            }
+            Intent intent = new Intent(context, PlaceDetailsActivity.class);
+            intent.putExtra("place_id", place.getId());
+            context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
         return placeList.size();
-    }
-
-    public void setOnPlaceClickListener(OnPlaceClickListener listener) {
-        this.listener = listener;
     }
 }

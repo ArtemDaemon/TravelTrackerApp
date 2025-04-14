@@ -23,4 +23,8 @@ public class Place {
         this.address = address;
         this.imageUri = imageUri;
     }
+
+    public int getId() {
+        return id;
+    }
 }
