@@ -11,14 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.traveltrackerapp.adapters.PlacesAdapter;
-import com.example.traveltrackerapp.database.AppDatabase;
-import com.example.traveltrackerapp.entities.Place;
 import com.example.traveltrackerapp.view_models.PlacesViewModel;
 
-import java.util.concurrent.Executors;
-
 public class PlacesFragment extends Fragment {
-    private PlacesViewModel viewModel;
     private PlacesAdapter adapter;
 
     public PlacesFragment() {}
@@ -33,7 +28,7 @@ public class PlacesFragment extends Fragment {
         adapter = new PlacesAdapter(requireContext());
         recyclerView.setAdapter(adapter);
 
-        viewModel = new ViewModelProvider(this).get(PlacesViewModel.class);
+        PlacesViewModel viewModel = new ViewModelProvider(this).get(PlacesViewModel.class);
         viewModel.getAllPlaces().observe(getViewLifecycleOwner(), places -> {
             adapter.setPlaceList(places);
         });

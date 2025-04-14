@@ -39,10 +39,11 @@ public abstract class AppDatabase extends RoomDatabase {
             Executors.newSingleThreadExecutor().execute(() -> {
                 AppDatabase database = getInstance(appContext);
                 database.placeDao().insert(new Place(
-                        "Кофейня Bloom",
-                        "г. Москва, ул. Скворецкая, 12",
+                        "Тестовое название",
+                        "Тестовый адрес",
                         "android.resource://com.example.traveltrackerapp/"
-                                + R.drawable.place_photo
+                                + R.drawable.no_image,
+                        "Тестовое описание"
                 ));
             });
         }

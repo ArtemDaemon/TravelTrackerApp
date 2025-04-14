@@ -7,24 +7,66 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "places")
 public class Place {
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
     @NonNull
-    public String name;
+    private String name;
 
     @NonNull
-    public String address;
+    private String address;
 
     @NonNull
-    public String imageUri;
+    private String imageUri;
 
-    public Place(@NonNull String name, @NonNull String address, @NonNull String imageUri) {
+    @NonNull
+    private String description;
+
+    public Place(@NonNull String name, @NonNull String address, @NonNull String imageUri,
+                 @NonNull String description) {
         this.name = name;
         this.address = address;
         this.imageUri = imageUri;
+        this.description = description;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(@NonNull String name) {
+        this.name = name;
+    }
+
+    public void setAddress(@NonNull String address) {
+        this.address = address;
+    }
+
+    public void setImageUri(@NonNull String imageUri) {
+        this.imageUri = imageUri;
+    }
+
+    @NonNull
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(@NonNull String description) {
+        this.description = description;
     }
 }

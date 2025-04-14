@@ -54,9 +54,9 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
     @Override
     public void onBindViewHolder(@NonNull PlaceViewHolder holder, int position) {
         Place place = placeList.get(position);
-        holder.name.setText(place.name);
-        holder.address.setText(place.address);
-        holder.image.setImageURI(Uri.parse(place.imageUri));
+        holder.name.setText(place.getName());
+        holder.address.setText(place.getAddress());
+        holder.image.setImageURI(Uri.parse(place.getImageUri()));
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, PlaceDetailsActivity.class);
