@@ -17,7 +17,7 @@
     <string name="place_name_edit_icon">Place\'s name edit icon</string>
     <string name="place_description">Самая любимая кофейня на районе! Ходим с собачками каждый день, кофе всегда безупречен, есть свежейшая выпечка и чуду. В кофейне всегда царит невероятно добрая атмосфера и уют! Зашёл, захожу и не жалею ❤️</string>
     <string name="place_address_pin">place_address_pin</string>
-    <string name="place_address"><u>г. Москва, ул. Скворецкая, 12</u></string>
+    <string name="place_address"><u>Координаты: 0.0, 0.0</u></string>
     <string name="refresh_address_icon">refresh_address_icon</string>
     <string name="toolbar_save_icon">Сохранить</string>
     <string name="no_image_place">No image place</string>

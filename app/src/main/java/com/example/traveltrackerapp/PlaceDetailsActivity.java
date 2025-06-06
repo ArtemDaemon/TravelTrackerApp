@@ -43,7 +43,8 @@ public class PlaceDetailsActivity extends AppCompatActivity {
                 ((TextView) findViewById(R.id.place_detail_name)).setText(place.getName());
                 ((TextView) findViewById(R.id.place_detail_description))
                         .setText(place.getDescription());
-                ((TextView) findViewById(R.id.place_detail_address)).setText(place.getAddress());
+                ((TextView) findViewById(R.id.place_detail_latlng))
+                        .setText("Координаты: " + place.getLatitude() + ", " + place.getLongitude());
             }
         });
 
@@ -67,7 +68,8 @@ public class PlaceDetailsActivity extends AppCompatActivity {
             intent.putExtra("placeId", currentPlace.getId());
             intent.putExtra("name", currentPlace.getName());
             intent.putExtra("description", currentPlace.getDescription());
-            intent.putExtra("address", currentPlace.getAddress());
+            intent.putExtra("latitude", currentPlace.getLatitude());
+            intent.putExtra("longitude", currentPlace.getLongitude());
             intent.putExtra("imageUri", currentPlace.getImageUri());
             startActivity(intent);
             return true;

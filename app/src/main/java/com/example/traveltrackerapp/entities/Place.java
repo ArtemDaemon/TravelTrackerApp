@@ -12,8 +12,8 @@ public class Place {
     @NonNull
     private String name;
 
-    @NonNull
-    private String address;
+    private double latitude;
+    private double longitude;
 
     @NonNull
     private String imageUri;
@@ -21,10 +21,11 @@ public class Place {
     @NonNull
     private String description;
 
-    public Place(@NonNull String name, @NonNull String address, @NonNull String imageUri,
+    public Place(@NonNull String name, double latitude, double longitude, @NonNull String imageUri,
                  @NonNull String description) {
         this.name = name;
-        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.imageUri = imageUri;
         this.description = description;
     }
@@ -37,8 +38,12 @@ public class Place {
         return name;
     }
 
-    public String getAddress() {
-        return address;
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
     public String getImageUri() {
@@ -53,8 +58,12 @@ public class Place {
         this.name = name;
     }
 
-    public void setAddress(@NonNull String address) {
-        this.address = address;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public void setImageUri(@NonNull String imageUri) {

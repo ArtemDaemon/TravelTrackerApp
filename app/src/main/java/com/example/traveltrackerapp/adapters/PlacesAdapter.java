@@ -34,13 +34,13 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
 
     public static class PlaceViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
-        TextView name, address;
+        TextView name, latLng;
 
         public PlaceViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.place_image);
             name = itemView.findViewById(R.id.place_name);
-            address = itemView.findViewById(R.id.place_address);
+            latLng = itemView.findViewById(R.id.place_address);
         }
     }
 
@@ -55,7 +55,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
     public void onBindViewHolder(@NonNull PlaceViewHolder holder, int position) {
         Place place = placeList.get(position);
         holder.name.setText(place.getName());
-        holder.address.setText(place.getAddress());
+        holder.latLng.setText("Координаты: " + place.getLatitude() + ", " + place.getLongitude());
         holder.image.setImageURI(Uri.parse(place.getImageUri()));
 
         holder.itemView.setOnClickListener(v -> {

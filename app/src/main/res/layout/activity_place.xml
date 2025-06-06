@@ -66,13 +66,24 @@
         app:layout_constraintTop_toBottomOf="@+id/place_detail_description"
         app:srcCompat="@drawable/mappin" />
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/place_detail_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/roboto"
         android:text='@string/place_address'
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/place_detail_description" /> -->
+
+    <TextView
+        android:id="@+id/place_detail_latlng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/roboto"
+        android:text="Координаты: 0.0, 0.0"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/imageView7"
         app:layout_constraintTop_toBottomOf="@+id/place_detail_description" />
@@ -84,7 +95,7 @@
         android:layout_marginTop="16dp"
         android:alpha=".5"
         android:contentDescription="@string/refresh_address_icon"
-        app:layout_constraintStart_toEndOf="@+id/place_detail_address"
+        app:layout_constraintStart_toEndOf="@+id/place_detail_latlng"
         app:layout_constraintTop_toBottomOf="@+id/place_detail_description"
         app:srcCompat="@drawable/ic_places" />
 

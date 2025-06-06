@@ -40,7 +40,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 AppDatabase database = getInstance(appContext);
                 database.placeDao().insert(new Place(
                         "Тестовое название",
-                        "Тестовый адрес",
+                        55.751244, // example latitude (Moscow)
+                        37.618423, // example longitude (Moscow)
                         "android.resource://com.example.traveltrackerapp/"
                                 + R.drawable.no_image,
                         "Тестовое описание"

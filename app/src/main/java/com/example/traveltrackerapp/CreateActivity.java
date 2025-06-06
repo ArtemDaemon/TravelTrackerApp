@@ -29,7 +29,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class CreateActivity extends AppCompatActivity {
-    private EditText editName, editDescription, editAddress;
+    private EditText editName, editDescription, editLatitude, editLongitude;
     private Button buttonSave;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     private String selectedImageUri = "android.resource://com.example.traveltrackerapp/"
@@ -40,16 +40,23 @@ public class CreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
+        editName = findViewById(R.id.place_create_name);
+        editDescription = findViewById(R.id.place_create_description);
+        editLatitude = findViewById(R.id.place_create_latitude);
+        editLongitude = findViewById(R.id.place_create_longitude);
+
         boolean isEdit = getIntent().getBooleanExtra("isEdit", false);
         if (isEdit) {
             String name = getIntent().getStringExtra("name");
             String description = getIntent().getStringExtra("description");
-            String address = getIntent().getStringExtra("address");
+            double latitude = getIntent().getDoubleExtra("latitude", 0.0);
+            double longitude = getIntent().getDoubleExtra("longitude", 0.0);
             String imageUri = getIntent().getStringExtra("imageUri");
 
-            ((EditText) findViewById(R.id.place_create_name)).setText(name);
-            ((EditText) findViewById(R.id.place_create_description)).setText(description);
-            ((EditText) findViewById(R.id.place_create_address)).setText(address);
+            editName.setText(name);
+            editDescription.setText(description);
+            editLatitude.setText(String.valueOf(latitude));
+            editLongitude.setText(String.valueOf(longitude));
 
             selectedImageUri = imageUri;
             ((ImageView) findViewById(R.id.place_create_image)).setImageURI(Uri.parse(imageUri));
@@ -136,16 +143,22 @@ public class CreateActivity extends AppCompatActivity {
     }
 
     private void savePlaceToDatabase() {
-        EditText nameEditText = findViewById(R.id.place_create_name);
-        EditText descriptionEditText = findViewById(R.id.place_create_description);
-        EditText addressEditText = findViewById(R.id.place_create_address);
+        String name = editName.getText().toString().trim();
+        String description = editDescription.getText().toString().trim();
+        String latStr = editLatitude.getText().toString().trim();
+        String lonStr = editLongitude.getText().toString().trim();
 
-        String name = nameEditText.getText().toString().trim();
-        String description = descriptionEditText.getText().toString().trim();
-        String address = addressEditText.getText().toString().trim();
-
-        if (name.isEmpty() || description.isEmpty() || address.isEmpty()) {
+        if (name.isEmpty() || description.isEmpty() || latStr.isEmpty() || lonStr.isEmpty()) {
             Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double latitude, longitude;
+        try {
+            latitude = Double.parseDouble(latStr);
+            longitude = Double.parseDouble(lonStr);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Введите корректные координаты", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -154,7 +167,7 @@ public class CreateActivity extends AppCompatActivity {
             if (placeId != -1) {
                 AppDatabase db = AppDatabase.getInstance(getApplicationContext());
                 new Thread(() -> {
-                    Place updatedPlace = new Place(name, address, selectedImageUri, description);
+                    Place updatedPlace = new Place(name, latitude, longitude, selectedImageUri, description);
                     updatedPlace.setId(placeId);
                     db.placeDao().updatePlace(updatedPlace);
                     runOnUiThread(() -> {
@@ -166,7 +179,7 @@ public class CreateActivity extends AppCompatActivity {
             }
         }
 
-        Place newPlace = new Place(name, address, selectedImageUri, description);
+        Place newPlace = new Place(name, latitude, longitude, selectedImageUri, description);
         AppDatabase db = AppDatabase.getInstance(getApplicationContext());
         new Thread(() -> {
             db.placeDao().insert(newPlace);

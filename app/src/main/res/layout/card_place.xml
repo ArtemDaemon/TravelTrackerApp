@@ -52,7 +52,7 @@
                     android:layout_height="16dp"
                     android:layout_marginEnd="4dp"
                     android:src="@drawable/mappin"
-                    android:tint="#D32F2F" />
+                    app:tint="#D32F2F" />
 
                 <TextView
                     android:id="@+id/place_address"
