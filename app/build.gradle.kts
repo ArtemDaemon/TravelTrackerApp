@@ -48,4 +48,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata:2.6.2")
 
     annotationProcessor("androidx.lifecycle:lifecycle-compiler:2.6.2")
+
+    implementation("org.osmdroid:osmdroid-android:6.1.16")
 }
