@@ -52,8 +52,15 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         viewModel.getPlaceById(placeId).observe(this, place -> {
             if (place != null) {
                 currentPlace = place;
-                ((ImageView) findViewById(R.id.place_detail_image)).
-                        setImageURI(Uri.parse(place.getImageUri()));
+
+                ImageView imageView = findViewById(R.id.place_detail_image);
+                String imageUri = place.getImageUri();
+                if (imageUri != null && imageUri.startsWith("android.resource://")) {
+                    imageView.setImageResource(R.drawable.no_image);
+                } else {
+                    imageView.setImageURI(Uri.parse(imageUri));
+                }
+
                 ((TextView) findViewById(R.id.place_detail_name)).setText(place.getName());
                 ((TextView) findViewById(R.id.place_detail_description))
                         .setText(place.getDescription());

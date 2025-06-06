@@ -56,7 +56,12 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlaceViewH
         Place place = placeList.get(position);
         holder.name.setText(place.getName());
         holder.latLng.setText("Координаты: " + place.getLatitude() + ", " + place.getLongitude());
-        holder.image.setImageURI(Uri.parse(place.getImageUri()));
+        String imageUri = place.getImageUri();
+        if (imageUri != null && imageUri.startsWith("android.resource://")) {
+            holder.image.setImageResource(R.drawable.no_image);
+        } else {
+            holder.image.setImageURI(Uri.parse(imageUri));
+        }
 
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, PlaceDetailsActivity.class);

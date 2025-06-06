@@ -54,7 +54,13 @@ public class CreateActivity extends AppCompatActivity {
             editLongitude.setText(String.valueOf(longitude));
 
             selectedImageUri = imageUri;
-            ((ImageView) findViewById(R.id.place_create_image)).setImageURI(Uri.parse(imageUri));
+            if (imageUri != null && imageUri.startsWith("android.resource://")) {
+                ((ImageView) findViewById(R.id.place_create_image)).setImageResource(R.drawable.no_image);
+            } else {
+                ((ImageView) findViewById(R.id.place_create_image)).setImageURI(Uri.parse(imageUri));
+            }
+        } else {
+            ((ImageView) findViewById(R.id.place_create_image)).setImageResource(R.drawable.no_image);
         }
 
         Toolbar toolbar = findViewById(R.id.toolbar);
