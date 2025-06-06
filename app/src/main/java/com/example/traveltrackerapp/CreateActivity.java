@@ -1,14 +1,10 @@
 package com.example.traveltrackerapp;
 
 import android.content.Intent;
-import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -30,7 +26,6 @@ import java.io.OutputStream;
 
 public class CreateActivity extends AppCompatActivity {
     private EditText editName, editDescription, editLatitude, editLongitude;
-    private Button buttonSave;
     private ActivityResultLauncher<Intent> imagePickerLauncher;
     private String selectedImageUri = "android.resource://com.example.traveltrackerapp/"
             + R.drawable.no_image;
