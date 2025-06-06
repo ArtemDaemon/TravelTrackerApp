@@ -27,4 +27,5 @@
     <string name="google_widget">Google widget</string>
     <string name="card_place_photo">Card place photo</string>
     <string name="edit_icon">Редактировать</string>
+    <string name="weather_string">Погода: ...</string>
 </resources>
